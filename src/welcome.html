@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/landing-page/sdfm.png">
+    <title>SDFM</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Sackers Square Gothic', sans-serif;
+        }
+        .welcome-screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.pinimg.com/originals/14/f4/35/14f435eaaf8d107cca5055ce150eaf47.gif') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+        .welcome-screen h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .welcome-screen button {
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            color: black;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+        .announcement {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            z-index: 1000;
+        }
+        .welcome-screen button {
+            padding: 10px 20px;
+            background-color: rgba(255, 250, 250, 0.816);
+            border: 2px solid rgb(11, 11, 11);
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement">
+        WELCOME TO SDFM. PLEASE ENJOY YOUR STAY.
+    </div>
+    <div class="welcome-screen">
+        <img src="/landing-page/sdfm.png" alt="SDFM Logo" style="width: 100px; height: auto;">
+        <button onclick="enterSite()">Enter</button>
+        <div id="splash-screen" class="splash-screen" style="display: none;"></div>
+    </div>
+</body>
+<script>
+    function enterSite() {
+        document.querySelector('.welcome-screen').style.display = 'none';
+        document.querySelector('.splash-screen').style.display = 'block';
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 0);
+    }
+</script>
+</html>
