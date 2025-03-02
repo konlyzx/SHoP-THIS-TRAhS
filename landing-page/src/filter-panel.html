@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index with Overlay Filter Panel</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .content {
+            padding: 20px;
+            z-index: 1;
+            position: relative;
+        }
+        .filter-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .filter-panel {
+            width: 300px;
+            background-color: #111;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .filter-panel h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .filter-option {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+        }
+        .filter-option:last-child {
+            border-bottom: none;
+        }
+        .filter-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .filter-footer button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .remove-all {
+            background-color: #444;
+            color: #fff;
+        }
+        .apply {
+            background-color: #fff;
+            color: #000;
+        }
+        .open-filter {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <button class="open-filter">Open Filter</button>
+        <h1>Index Content</h1>
+        <p>This is the main content of the index page.</p>
+    </div>
+    <div class="filter-overlay" id="filterOverlay">
+        <div class="filter-panel">
+            <h2>Filter</h2>
+            <div class="filter-option">
+                <span>Size</span>
+                <span>→</span>
+            </div>
+            <div class="filter-option">
+                <span>Colour</span>
+                <span>→</span>
+            </div>
+            <div class="filter-option">
+                <span>Availability</span>
+                <span>→</span>
+            </div>
+            <div class="filter-footer">
+                <button class="remove-all">Remove All</button>
+                <button class="apply">Apply</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Mostrar el contenido principal después de la pantalla de carga
+    setTimeout(() => {
+        document.getElementById('splash-screen').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+    }, 3000); // Cambia el tiempo según sea necesario
+
+    // Evento para abrir el panel de filtros
+    const openFilterButton = document.querySelector('.open-filter');
+    const filterOverlay = document.getElementById('filterOverlay');
+
+    openFilterButton.addEventListener('click', function() {
+        filterOverlay.style.display = 'flex';
+    });
+
+    // Evento para cerrar el panel de filtros al hacer clic fuera del panel
+    filterOverlay.addEventListener('click', function(e) {
+        if (e.target === filterOverlay) {
+            filterOverlay.style.display = 'none';
+        }
+    });
+});
+    </script>
+</body>
+</html>
